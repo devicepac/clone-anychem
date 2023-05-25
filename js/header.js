@@ -1,5 +1,4 @@
 window.addEventListener("load", function () {
-
   // nav 에 마우스 오버하면 header 높이 260px 변경주기
   // nav 에 마우스 아웃하면 header 높이 100px 변경하기
   // header 를 js 로 저장해 보자(변수 정의해 보자)
@@ -26,39 +25,29 @@ window.addEventListener("load", function () {
     header.classList.remove("header-active");
   });
 
-  // let a = document.querySelectorAll(".gnb > li");
-  // console.log(a);
-  // a.forEach(function (item) {
-  //   console.log(item);
-  //   console.log(item.getBoundingClientRect().left);
-  //   console.log(item.offsetWidth);
-  // });
+  let gnbA = document.querySelectorAll(".gnb > li");
+  let navBlueBar = document.querySelector(".nav-blue-bar");
 
-  // 모바일 아코디언 메뉴
-  const sideMenuA = document.querySelectorAll(".side-menu > li > a");
-  const sideSubMenu = document.querySelectorAll(".side-menu > li >.submenu");
-  // sideMenuA 의 각각을 클ㄹ릭하면, 클릭되어진 순간
-  // index 값을 console.log애 출력해 주세요.
-  // for을 사용해도 좋구요
-  // forEach를 사용해도 좋아요
-  sideMenuA.forEach((item, index) => {
-    item.addEventListener("click", function(event){
-      // a 태그의 href를 막는다.
-      event.preventDefault();
-      changeSubmenu(index);
+  // 최초 위치 및 너비
+  let posX = gnbA[0].getBoundingClientRect().left;
+  let widthX = gnbA[0].getBoundingClientRect().width;
+  navBlueBar.style.left = posX + "px";
+  navBlueBar.style.width = widthX + "px";
+
+  gnbA.forEach((item) => {
+    item.addEventListener("mouseenter", function (event) {
+      let posX = this.getBoundingClientRect().left;
+      let widthX = this.getBoundingClientRect().width;
+      // navBlueBar.style.left = posX + "px";
+      // navBlueBar.style.width = widthX + "px";
+      anime({
+        targets: navBlueBar,
+        left: posX,
+        width: widthX,
+        easing: "easeInOutQuad",
+        duration: 500,
+      });
     });
   });
-  function changeSubmenu(_index) {
-    sideSubMenu.forEach((item, index) => {
-      if(_index === index) {
-        if(item.style.display === "block"){
-          item.style.display = "none";
-        }else{
-          item.style.display = "block";
-        }
-      }else{
-        item.style.display = "none";
-      }
-    });
-  }
+
 });
