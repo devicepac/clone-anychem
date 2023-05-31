@@ -17,7 +17,7 @@ img {
   vertical-align: middle;
 }
 html {
-  font-size: 10px;
+  font-size: 16px;
 }
 body {
   font-family: "Nanum Gothic", "Noto Sans KR", sans-serif;
@@ -28,7 +28,14 @@ body {
   word-break: keep-all;
 }
 /* 공통클래스 */
-.container {
+.inner {
+  display: block;
+  position: relative;
+
+  width: 100%;
+  
+  max-width: 1500px;
+  margin: 0 auto;
 }
 .wrap {
   width: 100%;

@@ -37,13 +37,18 @@ window.addEventListener("load", function () {
       sideOpenNumber = undefined;
     }
   });
-  
-  let mbGnb = document.querySelector(".mb-gnb"); 
-  mbGnb.addEventListener("click", function(event){
+
+  const mbGnb = document.querySelector(".mb-gnb");
+  mbGnb.addEventListener("click", function (event) {
     // 이벤트 전달 막기
     event.stopPropagation();
-  })
+  });
+
   mbWrap.addEventListener("click", function (event) {
+    console.log("event.type : " + event.type);
+    console.log("event.target : " + event.target);
+    console.log("event.currentTarget : " + event.currentTarget);
+
     mbNav.classList.remove(mbNavActive);
     mbWrap.classList.remove(mbWrapActive);
     // Reset 하겠다.
